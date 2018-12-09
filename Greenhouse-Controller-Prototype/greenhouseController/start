@@ -1,0 +1,10 @@
+#!/bin/bash
+screen -ls | grep "greenhouseSession" > /dev/null
+if [ $? -eq 0 ]; then
+	screen -x "greenhouseSession"
+else
+	screen -S "greenhouseSession"
+	cd src
+	clear
+	sudo ./main.py
+fi
