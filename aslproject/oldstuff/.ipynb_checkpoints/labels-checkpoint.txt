@@ -1,0 +1,13 @@
+gs://project-raw-images/Car/:
+gs://project-raw-images/Car/d91e1fc17400158d.jpg
+gs://project-raw-images/Car/d939c3d2add94518.jpg
+gs://project-raw-images/Car/d946076a3789d6fc.jpg
+
+gs://project-raw-images/Vehicle/:
+gs://project-raw-images/Vehicle/248eec5fb86f1dd5.jpg
+gs://project-raw-images/Vehicle/249d93b7b295ead8.jpg
+gs://project-raw-images/Vehicle/24a772126623fd91.jpg
+gs://project-raw-images/Vehicle/24ad65280c0a8ddf.jpg
+gs://project-raw-images/Vehicle/d913ade8d099e940.jpg
+gs://project-raw-images/Vehicle/d91e1fc17400158d.jpg
+gs://project-raw-images/Vehicle/d939c3d2add94518.jpg

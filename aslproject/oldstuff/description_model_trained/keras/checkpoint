@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/jupyter/Final_Project/description_model_trained/keras/keras_model.ckpt"
+all_model_checkpoint_paths: "/home/jupyter/Final_Project/description_model_trained/keras/keras_model.ckpt"
