@@ -1,0 +1,87 @@
+input:disabled, textarea:disabled, button:disabled {
+    color: #666666;
+}
+button:disabled:hover {
+    border-color: #bbb;
+}
+
+.container-simple-layout {
+    text-align: center;
+    margin: 50px auto 0 auto;
+}
+
+header {
+    padding: 20px 30px;
+}
+header h1 {
+    padding: 0;
+    margin: 0;
+}
+
+table .col-centered {
+    text-align: center;
+}
+
+.menu {
+    margin: 10px;
+    border: 1px solid #dddddd;
+}
+.menu .link-active {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: #666666;
+}
+.menu>ul {
+    margin: 0;
+    padding: 0;
+}
+.menu>ul>li {
+    margin: 0;
+    padding: 5px 5px 5px 15px;
+}
+.menu ul label {
+    margin: 20px 5px 0px 5px;
+}
+
+.main-content-body {
+    padding: 0 30px;
+}
+
+.main-content-body .message {
+    margin: 10px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    border-left: 0;
+    border-right: 0;
+}
+
+.table>.row {
+    margin: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.table>.row>div {
+    margin: 0;
+    padding: 10px;
+}
+.table>.row>div:first-child {
+    font-weight: bold;
+}
+
+.delete-prompt {
+    text-align: center;
+}
+.delete-prompt>form>span,
+.delete-prompt>form>button {
+    display: inline-block;
+    width: 200px;
+    margin: 50px 50px 0 50px;
+}
+
+.main-nav-button {
+    margin-bottom: 30px;
+}
+.main-nav-button>a {
+    display: inline-block;
+    margin: 5px 30px 5px 15px;
+}

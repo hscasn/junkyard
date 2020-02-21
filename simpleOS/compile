@@ -1,0 +1,137 @@
+echo "Options: -v Verbose"
+echo "         -l Launch OS after compiling"
+
+rm -rf ./bin
+mkdir -p bin/isodir/boot/grub
+
+COMPILERPATH="${HOME}/opt/cross/bin/"
+echo -e "\nUsing compiler at $COMPILERPATH"
+PATH=$PATH:$COMPILERPATH
+
+TMPFILE="/tmp/${$}"
+VERBOSE=0
+LAUNCHBYDEFAULT=0
+
+function quit() {
+  if [[ $1 > 0 || $VERBOSE == 1 ]]
+  then
+    echo -e "\n----------------------------------------"
+    cat $TMPFILE
+    echo -e "----------------------------------------"
+  fi
+  if ! rm $TMPFILE
+  then
+    echo "ERROR: Could not delete temporary file $TMPFILE"
+  fi
+  exec 3>&-
+  exit ${1:-0}
+}
+
+if ! touch $TMPFILE
+then
+    echo "ERROR: Could not create temporary file"
+    quit 1
+fi
+
+# Parsing options
+PARSEDOPTIONS=0
+exec 3<> $TMPFILE
+if [[ $1 == "-v" || $2 == "-v" ]]
+then
+  VERBOSE=1
+  PARSEDOPTIONS=$(( PARSEDOPTIONS + 1 ))
+fi
+if [[ $1 == "-l" || $2 == "-l" ]]
+then
+  LAUNCHBYDEFAULT=1
+  PARSEDOPTIONS=$(( PARSEDOPTIONS + 1 ))
+fi
+if [[ $PARSEDOPTIONS != $# ]]
+then
+  echo "Illegal arguments provided"
+  exit 1
+fi
+
+echo -e "\nCompiling bootloader"
+if i686-elf-as bootloader/boot.s -o bin/boot.o > /dev/null 2>&3
+then
+    echo "- Bootloader compiled"
+else
+    echo "- ERROR: Error while compiling bootloader"
+    quit 1
+fi
+
+echo -e "\nCompiling kernel"
+for file in $(find kernel | grep -E ".*\.c$")
+do
+  dest=$(echo $file | sed -nr "s/^kernel/bin/ p" | sed -nr "s/c$/o/ p")
+  destdir=${dest%/*}
+  mkdir -p $destdir
+  echo -e "- Compiling $file to $dest"
+  if i686-elf-gcc -c $file -o $dest -std=gnu99 -ffreestanding -O2 -Wall -Wextra > /dev/null 2>&3
+  then
+    echo "- $file compiled"
+  else
+    echo "- ERROR: Error while compiling $file"
+    quit 1
+  fi
+done
+echo "- Kernel compiled"
+
+
+echo -e "\nLinking bootloader and kernel"
+files=$(find bin | grep -E "\.o$")
+if i686-elf-gcc -T bootloader/linker.ld -o bin/os.bin -ffreestanding -O2 -nostdlib -fno-use-linker-plugin $files -lgcc > /dev/null 2>&3
+then
+    echo "- Bootloader and kernel linked"
+else
+    echo "- ERROR: Error while linking kernel and bootloader"
+    quit 1
+fi
+
+echo -e "\nTesting multiboot"
+if grub-file --is-x86-multiboot bin/os.bin 2>&3
+then
+  echo "- Multiboot confirmed"
+else
+  echo "- ERROR: OS is not multiboot"
+  quit 1
+fi
+
+echo -e "\nCopying isodirs"
+if cp bin/os.bin bin/isodir/boot/os.bin 2>&3 && cp bootloader/grub.cfg bin/isodir/boot/grub/grub.cfg 2>&3
+then
+  echo "- Isodirs copied"
+else
+  echo "- ERROR: Could not copy isodirs"
+  quit 1
+fi
+
+
+echo -e "\nCreating a bootable image"
+if grub-mkrescue -o bin/os.iso bin/isodir > /dev/null 2>&3
+then
+  echo "- Bootable image created"
+else
+  echo "- ERROR: Could not create a bootable image. Make sure you have the following packages: libisoburn mtools"
+  quit 1
+fi
+
+if [[ $LAUNCHBYDEFAULT == 1 ]]
+then
+  REPLY="y"
+else
+  echo ""
+  read -sep "Would you like to run the ISO? (Y/n)" -n 1
+fi
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  if ! qemu-system-i386 -cdrom bin/os.iso > /dev/null 2>&3
+  then
+    echo "- ERROR: Could not run QEMU"
+    quit 1
+  fi
+fi
+
+echo -e "\nAll done!"
+quit

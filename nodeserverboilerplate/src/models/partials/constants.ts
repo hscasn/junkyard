@@ -1,0 +1,7 @@
+const MAX_STR_LEN = 10000;
+const MAX_THUMBNAIL_LEN = 10000;
+
+export {
+  MAX_STR_LEN,
+  MAX_THUMBNAIL_LEN,
+};

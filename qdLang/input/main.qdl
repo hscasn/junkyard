@@ -1,0 +1,46 @@
+! These are strings
+declare string greet "Hello there!\n"
+declare string loopy "Loop!!\n"
+declare string bye   "Goodbye!\n"
+
+declare string varAis "Variable A is: "
+declare string varBis "Variable B is: "
+declare string lnbr  "\n"
+
+! These are numbers
+declare number varA 2
+declare number varB 5
+
+
+! This is where the program starts
+start (
+
+    ! Here we are printing the variable "greet"
+    prints greet
+
+    do (
+        prints loopy
+    ) 5 times
+
+    prints varAis
+    printn varA
+    prints lnbr
+
+    prints varBis
+    printn varB
+    prints lnbr
+
+    compute varA + 4 into varB
+
+    compute varB - 2 into varA
+
+    prints varAis
+    printn varA
+    prints lnbr
+
+    prints varBis
+    printn varB
+    prints lnbr
+
+    prints bye
+)

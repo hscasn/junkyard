@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+node ./src/index.js
+
+if [[ $? == 0 ]]
+then
+    as -g -o ./output/out.o ./output/out.s &&\
+    ld -o ./output/out ./output/out.o &&\
+    rm ./output/out.o &&\
+    ./output/out
+fi
