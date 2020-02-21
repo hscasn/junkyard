@@ -69,7 +69,7 @@
     "ramda": "^0.25.0",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "reflect-metadata": "^0.1.12",
     "schema-inspector": "^1.6.8",
     "typeorm": "^0.2.7",
