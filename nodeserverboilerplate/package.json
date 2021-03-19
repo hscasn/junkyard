@@ -71,7 +71,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "reflect-metadata": "^0.1.12",
-    "schema-inspector": "^1.6.8",
+    "schema-inspector": "^2.0.0",
     "typeorm": "^0.2.7",
     "uuid": "^3.3.2",
     "webpack": "^4.16.3"
