@@ -72,7 +72,7 @@
     "react-dom": "^16.4.1",
     "reflect-metadata": "^0.1.12",
     "schema-inspector": "^1.6.8",
-    "typeorm": "^0.2.7",
+    "typeorm": "^0.2.25",
     "uuid": "^3.3.2",
     "webpack": "^4.16.3"
   },
