@@ -204,7 +204,7 @@ tensorboard==1.12.2
 tensorflow==1.12.0
 tensorflow-datasets==1.0.1
 tensorflow-estimator==1.13.0
-tensorflow-gpu==1.13.1
+tensorflow-gpu==2.5.3
 tensorflow-metadata==0.13.0
 tensorflow-probability==0.6.0
 tensorflow-serving-api-gpu==1.13.0
