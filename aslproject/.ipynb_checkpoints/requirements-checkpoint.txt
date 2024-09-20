@@ -50,7 +50,7 @@ gcsfs==0.2.1
 gevent==1.4.0
 gin-config==0.1.4
 gitdb2==2.0.5
-GitPython==2.1.11
+GitPython==3.1.41
 google-api-core==1.8.2
 google-api-python-client==1.7.8
 google-apitools==0.5.26
