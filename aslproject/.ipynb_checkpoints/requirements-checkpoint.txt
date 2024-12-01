@@ -106,7 +106,7 @@ jupyter-http-over-ws==0.0.4
 jupyter-latex-envs==1.4.6
 jupyter-nbextensions-configurator==0.4.1
 jupyter-tensorboard==0.1.9
-jupyterlab==0.33.12
+jupyterlab==1.2.21
 jupyterlab-git==0.5.0
 jupyterlab-launcher==0.11.2
 Keras==2.2.4
