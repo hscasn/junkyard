@@ -79,7 +79,7 @@ horovod==0.16.0
 html5lib==1.0.1
 httplib2==0.11.3
 icc-rt==2019.0
-idna==2.8
+idna==3.7
 intel-openmp==2019.0
 ipaddress==1.0.22
 ipykernel==4.8.2
