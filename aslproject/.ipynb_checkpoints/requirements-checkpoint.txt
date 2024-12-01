@@ -217,7 +217,7 @@ tf-agents==0.2.0rc2
 tfds-nightly==1.0.1.dev201903050105
 toolz==0.9.0
 tornado==5.1.1
-tqdm==4.31.1
+tqdm==4.66.3
 traitlets==4.3.2
 typing==3.6.6
 uritemplate==3.0.0
